@@ -1,4 +1,22 @@
 <?php
+$_ENV = include __DIR__ . '/../../.env.php';
+require_once '../../database/db_connect.php';
+
+if($_POST['action']=='signup') {
+
+    $name = mysqli_real_escape_string($_POST['name']);
+    $username = mysqli_real_escape_string($_POST['username']);
+    $email = mysqli_real_escape_string($_POST['email']);
+    $password = mysqli_real_escape_string($_POST['password']);
+    $confirm = mysqli_real_escape_string($_POST['confirm']);
+
+    if(!empty($name) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm) && $password == $confirm) {
+
+        $query= "INSERT INTO users(name, email, username, password) VALUES($name, $email, $username, $password)";
+        $stmt = $dbc->exec($query);
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +29,11 @@
 <body>
     <div class="container">
         <h1>Sign up for free!</h1>
-        <form action="/" method="POST">
+        <form action="sign_up.php" method="POST">
             <div class="form-group form-group-lg">
             <input type="text" class="form-control" placeholder="NAME" name="name"></div>
+            <div class="form-group form-group-lg">
+            <input type="text" class="form-control" placeholder="USERNAME" name="username"></div>
             <div class="form-group form-group-lg">
             <input type="email" class="form-control" placeholder="EMAIL" name="email"></div>
             <div class="form-group form-group-lg">
