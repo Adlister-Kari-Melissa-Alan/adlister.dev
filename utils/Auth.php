@@ -1,7 +1,8 @@
 <?php
 
 require_once 'Log.php';
-require_once '../models/User.php';
+//dir gives you a fully qualified path vs a relative path
+require_once __DIR__ . '/../models/User.php';
 
 class Auth
 {
