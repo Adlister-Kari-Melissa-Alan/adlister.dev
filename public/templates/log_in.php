@@ -1,4 +1,24 @@
+<?php
+$message = '';
+session_start();
+require '../../utils/Auth.php';
 
+if (Auth::check()){
+    header('location: Auth.php');
+    //make sure to exit on a redirect
+    exit();
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['pass'];
+    if (Auth::attempt($username, $password)) {
+        header('Location: Auth.php');
+        die;
+    } else {
+        $message = "Your username and password are not correct";
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
