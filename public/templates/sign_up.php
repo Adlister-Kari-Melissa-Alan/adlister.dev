@@ -2,13 +2,13 @@
 $_ENV = include __DIR__ . '/../../.env.php';
 require_once '../../database/db_connect.php';
 
-if($_POST['action']=='signup') {
+if($_SERVER['REQUEST_METHOD']==='POST') {
 
-    $name = mysqli_real_escape_string($_POST['name']);
-    $username = mysqli_real_escape_string($_POST['username']);
-    $email = mysqli_real_escape_string($_POST['email']);
-    $password = mysqli_real_escape_string($_POST['password']);
-    $confirm = mysqli_real_escape_string($_POST['confirm']);
+    $name = ($_POST['name']);
+    $username = ($_POST['username']);
+    $email = ($_POST['email']);
+    $password = ($_POST['password']);
+    $confirm = ($_POST['confirm']);
 
     if(!empty($name) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm) && $password == $confirm) {
 
