@@ -7,11 +7,11 @@
 <style>
 
     .user_profile {
-        margin-bottom: 60px;
+        margin-bottom: 6rem;
     }
 
     .user_profile_container {
-        width: 25em;
+        width: 30rem;
     }
 
 </style>
@@ -32,7 +32,7 @@
 
         <div class="user_profile">
             <p class"profile_head">Your ads</p>
-            <ul class="well">
+            <ul class="well list-unstyled">
                 <li>Ad 1</li>
                 <li>Ad 2</li>
             </ul>
