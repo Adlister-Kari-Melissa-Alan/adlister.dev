@@ -2,20 +2,21 @@
 $message = '';
 session_start();
 require '../../utils/Auth.php';
+require '../../utils/Input.php';
 
 if (Auth::check()){
-    header('location: Auth.php');
+    header('location: items_index.php');
     //make sure to exit on a redirect
     exit();
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['pass'];
+    $username = Input::get('username');
+    $password = Input::get('password');
     if (Auth::attempt($username, $password)) {
-        header('Location: Auth.php');
+        header('Location: items_index.php');
         die;
     } else {
-        $message = "Your username and password are not correct";
+      $message = "Your username or password are not correct";
     }
 }
 ?>
@@ -28,17 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
   <div class="container">
-    <form class="form-horizontal" method="POST" action="login.php">
+  <?= $message; ?>
+  <?= $_SESSION['ERROR_MESSAGE']?>
+    <form class="form-horizontal" method="POST" action="log_in.php">
       <div class="form-group form-group-lg">
-        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+        <label for="username" class="col-sm-2 control-label">Username</label>
         <div class="col-sm-10">
-          <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+          <input name="username" type="text" class="form-control" id="username" placeholder="Username">
         </div>
       </div>
       <div class="form-group form-group-lg">
-        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <label for="password" class="col-sm-2 control-label">Password</label>
         <div class="col-sm-10">
-          <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+          <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
         </div>
       </div>
       <div class="form-group form-group-lg">

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../models/User.php';
-
+User::truncate();
 $user = new User;
 $user->name = 'Finn Mertens';
 $user->email = 'finn@fansofbilly.com';
