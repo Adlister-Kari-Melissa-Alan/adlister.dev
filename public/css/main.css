@@ -1,0 +1,70 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+/*   Margin bottom by footer height 
+  margin-bottom: 60px;*/
+}
+#main_container {
+    margin-bottom: 50px;
+}
+/* ---------------------- NavBar ------------------------ */
+.navbar-default {
+    background-image: url('../../img/bkgrnd_1.1.jpg');
+}
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    background-color: none;
+}
+.navbar-default .navbar-brand {
+    color: #2CB1E6;
+}
+/* ---------------------- Carousel ------------------------ */
+.item img {
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 450px;
+}
+.carousel {
+/*    margin-top: -22px;*/
+}
+.carousel-caption {
+    color: black;
+    bottom: -80px;
+    text-shadow: none;
+}
+.carousel-control.right {
+    background-image: none;
+    margin-right: 8em;
+}
+.carousel-control.left {
+    background-image: none;
+    margin-left: 8em;
+}
+.carousel-inner {
+    overflow: visible;
+}
+/* ---------------------- FOOTER ------------------------ */
+#footer-container {
+    margin: auto;
+}
+.footer {
+    margin-top: 1.5em;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-image: url('../../img/bkgrnd_1.1.jpg');
+    color: white;
+    text-align: center;
+}
+footer li {
+    list-style-type: none;
+    display: inline-block;
+    color: white;
+    padding: 1.5em;
+}
+footer li a {
+    color: white;
+
+}
