@@ -1,3 +1,25 @@
+<?php
+require_once '../../models/Model.php';
+require_once '../../database/db_connect.php';
+
+$user=getUser("id");
+var_dump($user);
+
+function getUser($id, $default=null) {
+    if (isset($_REQUEST[$id])) {
+        return $_REQUEST[$id];
+        } else {
+            return $default;
+        }
+}
+
+function checkLoggedInUser($user)
+    
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
