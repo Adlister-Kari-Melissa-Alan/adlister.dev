@@ -1,3 +1,24 @@
+<?php
+require_once '../../models/Model.php';
+require_once '../../database/db_connect.php';
+    
+
+function fetchThree($dbc) {
+
+    $query=
+        'SELECT * FROM 
+        (SELECT * FROM ads ORDER BY id DESC LIMIT 0 , 3) AS descended
+        ORDER BY id ASC;';
+    $carouselItems = [];
+    $carouselItems['array']=$dbc->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($carouselItems);
+    return $carouselItems;
+}
+
+extract(fetchThree($dbc));
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,25 +60,21 @@
 
   <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="motorcycle_placeholder.jpg" alt="motorcycle">
+
+        <?php foreach ($array as $ad) {
+            if ($ad == $array[0]) { ?>
+                <div class="item active">
+                <?php } else { ?>
+                    <div class="item">
+            <?php } ?>
+            <img src="../<?= $ad['image_url'] ?>" alt="<?= $ad['name'] ?>">
             <div class="carousel-caption">
-                <p class='carousel-title'>Lorem ipsum</p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="door_placeholder.jpg" alt="door">
-            <div class="carousel-caption">
-                <p class='carousel-title'>Lorem ipsum 2</p>
+                <p class='carousel-title'><?= $ad['name'] ?></p>
             </div>
         </div>
 
-        <div class="item">
-            <img src="mustang_placeholder.jpg" alt="mustang">
-            <div class="carousel-caption">
-                <p class='carousel-title'>Lorem ipsum 3</p>
-            </div>
-        </div>
+        <?php }; ?> <!-- end foreach -->
+
     </div>
 
   <!-- Controls -->
