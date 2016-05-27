@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/../../models/Ads.php';
-
+Ads::truncate();
 $ad = new Ads;
 $ad->user_id = 1;
 $ad->name = 'SNES';
 $ad->description = 'Plays like new! Includes Mario Kart.';
 $ad->price = 150.00;
-$ad->image_url = 'img/uploads/100.png';
+$ad->image_url = 'img/foxworthy.jpg';
 $ad->save();
 
 $ad = new Ads;

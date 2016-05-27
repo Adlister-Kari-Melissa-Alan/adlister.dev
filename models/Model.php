@@ -247,6 +247,13 @@ class Model {
         return $instance;
     }
 
+    public static function truncate()
+    {
+        self::dbConnect();
+        $query = "DELETE FROM " . static::$table;
+        self::$dbc->exec($query);
+    }
+
 }
 
 ?>
