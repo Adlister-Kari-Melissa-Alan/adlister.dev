@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':username', $username, PDO::PARAM_STR);
-        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
         $stmt->execute();
     }
     header('Location: user_profile.php');
