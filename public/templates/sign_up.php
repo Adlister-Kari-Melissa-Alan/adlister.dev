@@ -1,6 +1,8 @@
 <?php
 $_ENV = include __DIR__ . '/../../.env.php';
 require_once '../../database/db_connect.php';
+include '../../views/partials/navbar.php';
+include '../footer.php';
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
 
@@ -12,9 +14,15 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
 
     if(!empty($name) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm) && $password == $confirm) {
 
-        $query= "INSERT INTO users(name, email, username, password) VALUES($name, $email, $username, $password)";
-        $stmt = $dbc->exec($query);
+        $query = "INSERT INTO users(name, email, username, password) VALUES(:name, :email, :username, :password)";
+        $stmt = $dbc->prepare($query);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $stmt->execute();
     }
+    header('Location: user_profile.php');
 }
 
 ?>
