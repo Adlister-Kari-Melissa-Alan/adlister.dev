@@ -1,50 +1,46 @@
+<?php
+$message = '';
+session_start();
+require '../utils/Auth.php';
+require '../utils/Input.php';
+
+if (Auth::check()){
+    header('location: items_index.php');
+    //make sure to exit on a redirect
+    exit();
+}
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = Input::get('username');
+    $password = Input::get('password');
+    if (Auth::attempt($username, $password)) {
+        header('Location: items_index.php');
+        die;
+    } else {
+      $message = "Your username or password are not correct";
+    }
+}
+?>
+
 <div class="container">
-
-	<section id="login">
-
-		<div class="row">
-
-			<h1 class="section-title">Login To OooLister</h1>
-
-			<?php if (isset($_SESSION['ERROR_MESSAGE'])) : ?>
-                <div class="alert alert-danger">
-                    <p class="error"><?= $_SESSION['ERROR_MESSAGE']; ?></p>
-                </div>
-                <?php unset($_SESSION['ERROR_MESSAGE']); ?>
-            <?php endif; ?>
-            <?php if (isset($_SESSION['SUCCESS_MESSAGE'])) : ?>
-                <div class="alert alert-success">
-                    <p class="success"><?= $_SESSION['SUCCESS_MESSAGE']; ?></p>
-                </div>
-                <?php unset($_SESSION['SUCCESS_MESSAGE']); ?>
-            <?php endif; ?>
-
-			<div class="col-md-6 col-md-offset-3">
-
-				<p>Login with your email/username and password</p>
-
-				<form method="POST" action="" data-validation data-required-message="This field is required">
-
-					<div class="form-group">
-					    <input type="text" class="form-control" id="email_user" name="email_user" placeholder="Email or Username" data-required>
-					</div>
-					<div class="form-group">
-					    <input type="password" class="form-control" id="password" name="password" placeholder="Password" data-required>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<button type="submit" class="btn btn-primary">Login</button>
-						</div>
-						<div class="col-sm-6 text-right">
-							<a href="/signup" class="btn btn-success">Go To Signup</a>
-						</div>
-					</div>
-				</form>
-
-			</div>
-
-		</div>
-
-	</section>
-
-</div>
+  <?= $message; ?>
+  <?= $_SESSION['ERROR_MESSAGE']?>
+    <form class="form-horizontal" method="POST" action="log_in.php">
+      <div class="form-group form-group-lg">
+        <label for="username" class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10">
+          <input name="username" type="text" class="form-control" id="username" placeholder="Username">
+        </div>
+      </div>
+      <div class="form-group form-group-lg">
+        <label for="password" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+          <input name="password" type="password" class="form-control" id="inputPassword3" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group form-group-lg">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Log in</button>
+        </div>
+      </div>
+    </form>
+  </div>

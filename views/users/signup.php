@@ -1,56 +1,45 @@
+<?php
+$_ENV = include __DIR__ . '/../../.env.php';
+require_once '../../database/db_connect.php';
+include '../../views/partials/navbar.php';
+include '../footer.php';
+
+if($_SERVER['REQUEST_METHOD']==='POST') {
+
+    $name = ($_POST['name']);
+    $username = ($_POST['username']);
+    $email = ($_POST['email']);
+    $password = ($_POST['password']);
+    $confirm = ($_POST['confirm']);
+
+    if(!empty($name) && !empty($username) && !empty($email) && !empty($password) && !empty($confirm) && $password == $confirm) {
+
+        $query = "INSERT INTO users(name, email, username, password) VALUES(:name, :email, :username, :password)";
+        $stmt = $dbc->prepare($query);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':username', $username, PDO::PARAM_STR);
+        $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $stmt->execute();
+    }
+    header('Location: user_profile.php');
+}
+
+?>
+
 <div class="container">
-
-	<section id="login">
-
-		<div class="row">
-
-			<h1 class="section-title">Signup For OooLister</h1>
-
-			<div class="col-md-6 col-md-offset-3">
-
-				<p>Please fill out the information below so we can create your account.</p>
-				<?php if (isset($_SESSION['ERROR_MESSAGE'])) : ?>
-	                <div class="alert alert-danger">
-	                    <p class="error"><?= $_SESSION['ERROR_MESSAGE']; ?></p>
-	                </div>
-	                <?php unset($_SESSION['ERROR_MESSAGE']); ?>
-	            <?php endif; ?>
-	            <?php if (isset($_SESSION['SUCCESS_MESSAGE'])) : ?>
-	                <div class="alert alert-success">
-	                    <p class="success"><?= $_SESSION['SUCCESS_MESSAGE']; ?></p>
-	                </div>
-	                <?php unset($_SESSION['SUCCESS_MESSAGE']); ?>
-	            <?php endif; ?>
-
-				<form method="POST" action="" data-validation data-required-message="This field is required">
-
-					<div class="form-group">
-					    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" data-required>
-					</div>
-					<div class="form-group">
-					    <input type="text" class="form-control" id="email" name="email" placeholder="Email" data-required>
-					</div>
-					<div class="form-group">
-					    <input type="text" class="form-control" id="username" name="username" placeholder="Username" data-required>
-					</div>
-					<div class="form-group">
-					    <input type="password" class="form-control" id="password" name="password" placeholder="Password" data-required>
-					</div>
-					<div class="row">
-						<div class="col-sm-6">
-							<button type="submit" class="btn btn-primary">Signup</button>
-						</div>
-						<div class="col-sm-6 text-right">
-							<a href="/login" class="btn btn-success">Go To Login</a>
-						</div>
-					</div>
-
-				</form>
-
-			</div>
-
-		</div>
-
-	</section>
-
-</div>
+        <h1>Sign up for free!</h1>
+        <form action="sign_up.php" method="POST">
+            <div class="form-group form-group-lg">
+            <input type="text" class="form-control" placeholder="NAME" name="name"></div>
+            <div class="form-group form-group-lg">
+            <input type="text" class="form-control" placeholder="USERNAME" name="username"></div>
+            <div class="form-group form-group-lg">
+            <input type="email" class="form-control" placeholder="EMAIL" name="email"></div>
+            <div class="form-group form-group-lg">
+            <input type="password" class="form-control" placeholder="PASSWORD" name="password"></div>
+            <div class="form-group form-group-lg">
+            <input type="password" class="form-control" placeholder="CONFIRM PASSWORD" name="confirm"></div>
+            <button type="submit" class="btn btbn-default" name="sumbit">Submit</button>
+        </form>
+    </div>
