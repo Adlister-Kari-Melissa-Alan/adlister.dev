@@ -11,7 +11,8 @@ $query = 'CREATE TABLE ads (
     description TEXT NOT NULL,
     price DOUBLE NOT NULL,
     image_url VARCHAR(180),
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
 )';
 
 $dbc->exec($query);
