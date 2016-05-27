@@ -1,9 +1,10 @@
 <?php
 require_once '../../models/Model.php';
 require_once '../../database/db_connect.php';
+require_once '../../utils/Auth.php';
 
 $user=getUser("id");
-var_dump($user);
+// var_dump($user);
 
 function getUser($id, $default=null) {
     if (isset($_REQUEST[$id])) {
@@ -13,12 +14,18 @@ function getUser($id, $default=null) {
         }
 }
 
-function checkLoggedInUser($user)
-    
+function getUsersAds($dbc, $user) {
+    $query=
+        "SELECT ads.id, ads.name, users.name AS user_name, users.email FROM ads JOIN users ON ads.user_id = users.id WHERE users.id={$user};";
+    $usersAds = [];
+    $usersAds['array']=$dbc->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($usersAds);
+    return $usersAds;
+}
 
+extract(getUsersAds($dbc, $user));
 
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -44,21 +51,32 @@ function checkLoggedInUser($user)
             <p class"profile_head">Your info</p>
             <dl class="well">
                 <dt>Name</dt>
-                <dd> # </dd>
+                <dd> <?= $array[0]['user_name'] ?> </dd>
 
                 <dt>Email</dt>
-                <dd> # </dd>
+                <dd> <?= $array[0]['email'] ?> </dd>
             </dl>
-            <a class="btn btn-default" href="#" role="button">Edit Profile</a>
+
+            <?php 
+                if (Auth::check()) { ?>
+                    <a class="btn btn-default" href="#" role="button">Edit Profile</a>
+                <?php } ?>
         </div>
 
         <div class="user_profile">
             <p class"profile_head">Your ads</p>
             <ul class="well list-unstyled">
-                <li>Ad 1</li>
-                <li>Ad 2</li>
+                
+            <?php foreach ($array as $ad) { ?>
+
+            <li><?= substr($ad['name'], 0, 25) ?>...</li>
+
+        <?php }; ?> <!-- end foreach -->
             </ul>
-            <a class="btn btn-default" href="#" role="button">Create Ad</a>
+            <?php 
+                if (Auth::check()) { ?>
+                    <a class="btn btn-default" href="ads/create.php" role="button">Create Ad</a>
+                <?php } ?>
         </div>
     </div>
 
