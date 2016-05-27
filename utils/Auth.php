@@ -15,7 +15,7 @@ class Auth
 		if(($username == '' || $username == null) || ($password == '' || $password == null))
 		{
 
-			$_SESSION['ERROR_MESSAGE'] = 'Login information was incorrect';
+			$_SESSION['ERROR_MESSAGE'] = 'Please enter into both fields';
 			return false;
 		}
 
@@ -26,7 +26,7 @@ class Auth
 		if ($user == null)
 		{
 
-			$_SESSION['ERROR_MESSAGE'] = 'Login information was incorrect';
+			$_SESSION['ERROR_MESSAGE'] = 'No user by that name exists';
 			return false;
 		}
 
@@ -39,10 +39,12 @@ class Auth
 			$_SESSION['LOGGED_IN_ID'] = $user->id;
 
 			return true;
+		} else {
+			$_SESSION['ERROR_MESSAGE'] = 'Your password was incorrect';
+			return false;
+			
 		}
 
-		$_SESSION['ERROR_MESSAGE'] = 'Login information was incorrect';
-		return false;
 	}
 
 	// checks session to see if user is logged in
