@@ -26,9 +26,32 @@ function pageController()
     // switch that will run functions and setup variables dependent on what route was accessed
     switch ($request) {
 
+        case:    // displays 404 if route not specified above
+            $main_view = 'public/item_create.php';
+            break;
 
-        default:    // displays 404 if route not specified above
-            $main_view = '../views/404.php';
+        case:    // displays 404 if route not specified above
+            $main_view = 'public/item_edit.php';
+            break;
+
+        case:    // displays 404 if route not specified above
+            $main_view = 'public/items_index.php';
+            break;
+
+        case:    // displays 404 if route not specified above
+            $main_view = 'public/items.php';
+            break;
+
+        case:    // displays 404 if route not specified above
+            $main_view = 'public/log_in.php';
+            break;
+
+        case:    // displays 404 if route not specified above
+            $main_view = 'public/sign_up.php';
+            break;
+
+        case:    // displays 404 if route not specified above
+            $main_view = 'public/user_profile';
             break;
     }
 
