@@ -6,9 +6,6 @@ $data = [];
 $stmt = $dbc->query("SELECT * FROM ads");
 $data['ad'] = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
-$dataUser = [];
-$stmt2 = $dbc->query("SELECT * FROM users");
-$data['user'] = $stmt->fetchALL(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +34,7 @@ $data['user'] = $stmt->fetchALL(PDO::FETCH_ASSOC);
 <?php foreach ($data['ad'] as $ad): ?>
   <div class="col-xs-12 col-md-6 col-lg-6 ads">
     <div class="thumbnail">
-      <img class="ads_image" src="../<?= $ad['image_url'] ?>" alt="Chair">
+      <img class="ads_image" src="../<?= $ad['image_url'] ?>" alt="Item">
       <div class="caption">
         <h3><?= substr($ad['name'], 0, 25) ?>...</h3>
         <p>$<?= $ad['price'] ?>.00</p>
