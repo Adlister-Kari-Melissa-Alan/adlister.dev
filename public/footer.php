@@ -1,26 +1,3 @@
-<style>
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
-}
-footer li {
-    list-style-type: none;
-    display: inline-block;
-}
-</style>
-
 <footer class="footer">
     <div class="container">
         <ul>
