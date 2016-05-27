@@ -18,7 +18,7 @@
           <li><a href="/ads/index">Items</a></li>
           <li><a href="/users/account">Account</a></li>
           <li><a href="#">Logout</a></li>
-          <li><a href="/ads/create.<?php  ?>">Post Ad</a></li>
+          <li><a href="/ads/create<?php  ?>">Post Ad</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

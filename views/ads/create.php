@@ -12,9 +12,12 @@ function adItem() {
     $ad->name = $name;
     $ad->description = $description;
     $ad->price = $price;
-    $ad->image_url = ' ';
-var_dump(Input::all());
+    $ad->image_url = 'img/noImage.png';
+// var_dump(Input::all());
     $ad->save();
+
+    header("Location: /ads/show?id=$ad->id");
+    exit;
 }
 
 if(Input::has('name') && Input::has('price') && Input::has('description')) {
@@ -23,7 +26,7 @@ if(Input::has('name') && Input::has('price') && Input::has('description')) {
 ?>
 
 <div class="container">
-  <form action="item_create.php" method="POST">
+  <form action="/ads/create" method="POST">
     <div class="form-group form-group-lg">
       <label for="itemName">Item Name</label>
       <input name="name" class="form-control" id="itemName" placeholder="Item Name">

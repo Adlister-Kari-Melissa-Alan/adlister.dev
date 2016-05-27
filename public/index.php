@@ -22,7 +22,7 @@ require_once '../database/db_connect.php';
 
     <?php require $main_view; ?>
 
-    <?php require '../views/partials/footer.php' ?>
+    
     <?php require '../views/partials/common_js.php'; ?>
 
 
