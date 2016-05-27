@@ -14,6 +14,14 @@ function getUser($id, $default=null) {
         }
 }
 
+
+$infoQuery=
+    "SELECT name, email FROM users WHERE id={$user};";
+$usersInfo = [];
+$usersInfo['array']=$dbc->query($infoQuery)->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($usersInfo['array']);
+
+
 function getUsersAds($dbc, $user) {
     $query=
         "SELECT ads.id, ads.name, users.name AS user_name, users.email FROM ads JOIN users ON ads.user_id = users.id WHERE users.id={$user};";
@@ -51,10 +59,10 @@ extract(getUsersAds($dbc, $user));
             <p class"profile_head">Your info</p>
             <dl class="well">
                 <dt>Name</dt>
-                <dd> <?= $array[0]['user_name'] ?> </dd>
+                <dd> <?= $usersInfo['array'][0]['name'] ?> </dd>
 
                 <dt>Email</dt>
-                <dd> <?= $array[0]['email'] ?> </dd>
+                <dd> <?= $usersInfo['array'][0]['email'] ?> </dd>
             </dl>
 
             <?php 
