@@ -1,3 +1,24 @@
+<?php
+require_once '../../models/Model.php';
+require_once '../../database/db_connect.php';
+    
+
+function fetchThree($dbc) {
+
+    $query=
+        'SELECT * FROM 
+        (SELECT * FROM ads ORDER BY id DESC LIMIT 0 , 3) AS descended
+        ORDER BY id ASC;';
+    $carouselItems = [];
+    $carouselItems['array']=$dbc->query($query)->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($carouselItems);
+    return $carouselItems;
+}
+
+extract(fetchThree($dbc));
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +79,9 @@
                 <p class='carousel-title'>Lorem ipsum 3</p>
             </div>
         </div>
+
+
+
     </div>
 
   <!-- Controls -->
