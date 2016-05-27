@@ -16,6 +16,7 @@ function fetchThree($dbc) {
 }
 
 extract(fetchThree($dbc));
+
 ?>
 
 <div id="main_container">
