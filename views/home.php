@@ -19,7 +19,7 @@ extract(fetchThree($dbc));
 
 ?>
 
-<div id="main_container">
+<div id="mainContainer">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
             <ol class="carousel-indicators">
