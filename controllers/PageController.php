@@ -23,35 +23,26 @@ function pageController()
         $request = $_SERVER['REQUEST_URI'];
     }
 
+    var_dump($request);
+
     // switch that will run functions and setup variables dependent on what route was accessed
     switch ($request) {
 
-        case:    // displays 404 if route not specified above
-            $main_view = 'public/item_create.php';
+
+        case '/':
+            $main_view = '../views/home.php';
             break;
 
-        case:    // displays 404 if route not specified above
-            $main_view = 'public/item_edit.php';
+        case '/ads':
+            $main_view = '../views/ads/index.php';
             break;
 
-        case:    // displays 404 if route not specified above
-            $main_view = 'public/items_index.php';
+        case '/ads/create':
+            $main_view = '../views/ads/create.php';
             break;
 
-        case:    // displays 404 if route not specified above
-            $main_view = 'public/items.php';
-            break;
-
-        case:    // displays 404 if route not specified above
-            $main_view = 'public/log_in.php';
-            break;
-
-        case:    // displays 404 if route not specified above
-            $main_view = 'public/sign_up.php';
-            break;
-
-        case:    // displays 404 if route not specified above
-            $main_view = 'public/user_profile';
+        default:    // displays 404 if route not specified above
+            $main_view = '../views/404.php';
             break;
     }
 
