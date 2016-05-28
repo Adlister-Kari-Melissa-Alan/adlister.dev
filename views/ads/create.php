@@ -8,7 +8,7 @@ function adItem() {
     $description = Input::get('description');
     $ad = new Ads;
     //auth class to get id of a logged in user.
-    $ad->user_id = 1;
+    $ad->user_id = Auth::id();
     $ad->name = $name;
     $ad->description = $description;
     $ad->price = $price;
