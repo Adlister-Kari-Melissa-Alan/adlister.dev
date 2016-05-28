@@ -62,7 +62,7 @@ extract(getUsersAds($dbc, $user));
         </ul>
         <?php 
             if (Auth::check()) { ?>
-                <a class="btn btn-default" href="ads/create.php" role="button">Create Ad</a>
+                <a class="btn btn-default" href="/ads/create" role="button">Create Ad</a>
             <?php } ?>
     </div>
 </div>

@@ -16,9 +16,14 @@
         <ul class="nav navbar-nav">
           <li><a href="/">Home <span class="sr-only">(current)</span></a></li>
           <li><a href="/ads/index">Items</a></li>
-          <li><a href="/users/account">Account</a></li>
-          <li><a href="#">Logout</a></li>
-          <li><a href="/ads/create<?php  ?>">Post Ad</a></li>
+          <?php if (Auth::check()) { ?>
+            <li><a href="/users/account?id=<?= Auth::id() ?>">Account</a></li>
+            <li><a href="/logout.php">Logout</a></li>
+            <li><a href="/ads/create<?php  ?>">Post Ad</a></li>
+          <?php } else { ?>
+            <li><a href="/users/signup">Sign Up</a></li>
+            <li><a href="/users/login">Log In</a></li>
+          <?php } ?>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
