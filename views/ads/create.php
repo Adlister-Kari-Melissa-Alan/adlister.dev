@@ -1,6 +1,7 @@
 <?php
 require_once '../models/Ads.php';
 require_once '../utils/Input.php';
+require_once '../utils/helper_functions.php';
 
 function adItem() {
     $name = Input::get('name');
@@ -12,17 +13,17 @@ function adItem() {
     $ad->name = $name;
     $ad->description = $description;
     $ad->price = $price;
-    $ad->image_url = 'img/noImage.png';
+    $ad->image_url = $img;
 // var_dump(Input::all());
     $ad->save();
 
     header("Location: /ads/show?id=$ad->id");
     exit;
 }
-
 if(Input::has('name') && Input::has('price') && Input::has('description')) {
     adItem();
 }
+
 ?>
 
 <div class="container">
@@ -39,9 +40,19 @@ if(Input::has('name') && Input::has('price') && Input::has('description')) {
         <div class="input-group-addon">.00</div>
       </div>
     </div>
+<!--ADDING IMAGE-->
+    <div class="input-group">
+      <label class="input-group-btn">
+        <span class="btn btn-primary">
+          <input name="img" type="file">
+        </span>
+      </label>
+    </div>
+<!--DESCRIPTION-->
     <div class="form-group">
         <textarea name="description" class="form-control" rows="3"></textarea>
     </div>
+<!--SUBMIT BUTTON-->
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>

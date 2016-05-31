@@ -1,8 +1,6 @@
 <?php
 $_ENV = include __DIR__ . '/../../.env.php';
-require_once '../../database/db_connect.php';
-include '../../views/partials/navbar.php';
-include '../footer.php';
+require_once '../database/db_connect.php';
 
 if($_SERVER['REQUEST_METHOD']==='POST') {
 
@@ -22,14 +20,14 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
         $stmt->execute();
     }
-    header('Location: user_profile.php');
+    header('Location: /users/account');
 }
 
 ?>
 
 <div class="container">
         <h1>Sign up for free!</h1>
-        <form action="sign_up.php" method="POST">
+        <form action="/users/signup" method="POST">
             <div class="form-group form-group-lg">
             <input type="text" class="form-control" placeholder="NAME" name="name"></div>
             <div class="form-group form-group-lg">

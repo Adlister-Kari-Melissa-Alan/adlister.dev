@@ -46,7 +46,7 @@ extract(getUsersAds($dbc, $user));
 
         <?php //if user is not logged in, hide button
             if (Auth::id()==$user) { ?>
-                <a class="btn btn-default" href="#" role="button">Edit Profile</a>
+                <a class="btn btn-default" href="/users/edit" role="button">Edit Profile</a>
             <?php } ?>
     </div>
 
