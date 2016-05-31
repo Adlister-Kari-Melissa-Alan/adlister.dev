@@ -8,7 +8,7 @@ $data['ad'] = $stmt->fetchALL(PDO::FETCH_ASSOC);
 
 ?>
 
-<h1>Items Listings</h1>
+<h1 class="itemsh1">Items Listings</h1>
 
 <div id="main" class="container">
 <?php foreach ($data['ad'] as $ad): ?>
