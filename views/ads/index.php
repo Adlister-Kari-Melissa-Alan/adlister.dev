@@ -18,7 +18,7 @@ $data['ad'] = $stmt->fetchALL(PDO::FETCH_ASSOC);
       <div class="caption">
         <h3><?= substr($ad['name'], 0, 25) ?>...</h3>
         <p>$<?= $ad['price'] ?>.00</p>
-        <p><a href="#" class="btn btn-default" role="button">View Item</a></p>
+        <p><a href="/ads/show?id=<?=$ad['id'] ?>" class="btn btn-default" role="button">View Item</a></p>
       </div>
     </div>
   </div>

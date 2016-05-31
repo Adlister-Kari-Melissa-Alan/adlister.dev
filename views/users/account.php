@@ -44,9 +44,9 @@ extract(getUsersAds($dbc, $user));
             <dd> <?= $usersInfo['array'][0]['email'] ?> </dd>
         </dl>
 
-        <?php 
-            if (Auth::check()) { ?>
-                <a class="btn btn-default" href="#" role="button">Edit Profile</a>
+        <?php //if user is not logged in, hide button
+            if (Auth::id()==$user) { ?>
+                <a class="btn btn-default" href="/users/edit" role="button">Edit Profile</a>
             <?php } ?>
     </div>
 
@@ -56,13 +56,13 @@ extract(getUsersAds($dbc, $user));
             
         <?php foreach ($array as $ad) { ?>
 
-        <li><?= substr($ad['name'], 0, 25) ?>...</li>
+        <li><a href="/ads/show?id=<?= $ad['id'] ?>"><?= substr($ad['name'], 0, 25) ?>...</a></li>
 
     <?php }; ?> <!-- end foreach -->
         </ul>
-        <?php 
-            if (Auth::check()) { ?>
-                <a class="btn btn-default" href="ads/create.php" role="button">Create Ad</a>
+        <?php //if user is not logged in, hide button
+            if (Auth::id()==$user) { ?>
+                <a class="btn btn-default" href="/ads/create" role="button">Create Ad</a>
             <?php } ?>
     </div>
 </div>

@@ -1,11 +1,11 @@
 <?php
 $message = '';
-session_start();
-require '../utils/Auth.php';
-require '../utils/Input.php';
+// session_start();
+// require '../utils/Auth.php';
+// require '../utils/Input.php';
 
 if (Auth::check()){
-    header('location: items_index.php');
+    header('location: /ads/index');
     //make sure to exit on a redirect
     exit();
 }
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = Input::get('username');
     $password = Input::get('password');
     if (Auth::attempt($username, $password)) {
-        header('Location: items_index.php');
+        header('Location: /ads/index');
         die;
     } else {
       $message = "Your username or password are not correct";
@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="container">
   <?= $message; ?>
-  <?= $_SESSION['ERROR_MESSAGE']?>
-    <form class="form-horizontal" method="POST" action="log_in.php">
+
+    <form class="form-horizontal" method="POST" action="/users/login">
       <div class="form-group form-group-lg">
         <label for="username" class="col-sm-2 control-label">Username</label>
         <div class="col-sm-10">

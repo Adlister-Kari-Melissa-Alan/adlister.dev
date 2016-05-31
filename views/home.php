@@ -16,9 +16,10 @@ function fetchThree($dbc) {
 }
 
 extract(fetchThree($dbc));
+
 ?>
 
-<div id="main_container">
+<div id="mainContainer">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -33,9 +34,9 @@ extract(fetchThree($dbc));
                     <div class="item active">
                         <?php } else { ?>
                             <div class="item"><?php } ?>
-                                <img src="../<?= $ad['image_url'] ?>" alt="<?= $ad['name'] ?>">
+                                <a href="/ads/show?id=<?= $ad['id'] ?>"><img src="../<?= $ad['image_url'] ?>" alt="<?= $ad['name'] ?>"></a>
                                     <div class="carousel-caption">
-                                        <p class='carousel-title'><?= $ad['name'] ?></p>
+                                        <p class='carousel-title'><a href="/ads/show?id=<?= $ad['id'] ?>"><?= $ad['name'] ?></a></p>
                                     </div>
                             </div>
                             <?php }; ?> <!-- end foreach -->

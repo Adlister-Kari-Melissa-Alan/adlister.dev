@@ -12,6 +12,7 @@ body {
 /* ---------------------- NavBar ------------------------ */
 .navbar-default {
     background-image: url('../../img/bkgrnd_1.1.jpg');
+    z-index: 99;
 }
 .navbar-default .navbar-nav > li > a {
     color: white;
@@ -37,26 +38,35 @@ body {
 .carousel-control.right {
     background-image: none;
     margin-right: 8em;
+    height: 80%;
+    /*height: 300px;
+    margin-top: 60px;*/
 }
 .carousel-control.left {
     background-image: none;
     margin-left: 8em;
+    height: 80%;
+    /*height: 300px;
+    margin-top: 60px;*/
 }
 .carousel-inner {
     overflow: visible;
+}
+#mainContainer {
 }
 /* ---------------------- FOOTER ------------------------ */
 #footer-container {
     margin: auto;
 }
 .footer {
-    margin-top: 1.5em;
+    margin-top: 4em;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 60px;
     background-image: url('../../img/bkgrnd_1.1.jpg');
     color: white;
     text-align: center;
+    
 }
 footer li {
     list-style-type: none;
