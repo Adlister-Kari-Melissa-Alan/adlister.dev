@@ -4,7 +4,7 @@ require_once '../models/Ads.php';
 require_once '../utils/Input.php';
 require_once '../utils/helper_functions.php';
 
-$ad = Ads::find(Input::get("id"));
+$ad = Ads::find(Input::get('id'));
   if ($_POST) {
     $ad->name = Input::get('name');
     $ad->description = Input::get('description');
