@@ -6,7 +6,7 @@
 <div class="row">
   <div class="col-sm-6 col-md-6">
     <div class="thumbnail">
-      <img src="/<?= $ad->image_url ?>" alt="<?=$ad->name ?>">
+      <img src="<?= $ad->image_url ?>" alt="<?=$ad->name ?>">
       <div class="caption">
         <h3><?=$ad->name ?></h3>
         <p><?=$ad->description ?></p>
