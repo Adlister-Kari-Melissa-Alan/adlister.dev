@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 require_once __DIR__ . '/../bootstrap.php';
 require_once '../models/Ads.php';
 require_once '../models/Model.php';
