@@ -1,6 +1,6 @@
 <footer class="footer">
     <div class="container">
-        <ul>
+        <ul class="text-muted">
             <li>&copy; 2016 </li>
             <li><a href="#footer-Alan">Alan Lauritzen</a></li>
             <li><a href="#footer-Kari">Kari Palomino</a></li>
@@ -8,3 +8,5 @@
         </ul>      
   </div>
 </footer>
+
+
