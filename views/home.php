@@ -18,7 +18,8 @@ function fetchThree($dbc) {
 extract(fetchThree($dbc));
 
 ?>
-
+<h1>KAM LISTINGS</h1>
+<p>Start by browsing our <a href="/ads/index">items</a>. If you'd like to post an ad, <a href="/users/signup">sign up</a> for free. Check out the newest items posted below:</p>
 <div id="mainContainer">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
