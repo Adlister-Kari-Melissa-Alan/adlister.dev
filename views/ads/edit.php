@@ -13,7 +13,7 @@ $ad = Ads::find(Input::get("id"));
       $ad->image_url = saveUploadedImage('img');
     } else {
       $ad->save();
-      header("Location: /ads/show?id=$ad->id");
+      header("Location: /ads/show?{id=$ad->id}");
       exit;
     }
   }

@@ -20,7 +20,7 @@ if($_SERVER['REQUEST_METHOD']==='POST') {
         $stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
         $stmt->execute();
     }
-    header('Location: /users/account');
+    header("Location: /users/login");
 }
 
 ?>
